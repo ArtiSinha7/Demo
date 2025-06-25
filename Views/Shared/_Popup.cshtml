@@ -1,0 +1,92 @@
+@model Demo.Models.SchoolModel.ProjectData
+<style>
+    .closeiconpharmahomepage:hover {
+        color: dodgerblue;
+    }
+
+    .popupoverlaypharmahomepage {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0,0,0,0.4);
+        z-index: 999;
+    }
+
+    .popupmodalpharmahomepage {
+        display: none;
+        position: fixed;
+        top: 30%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: white;
+        padding: 20px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        z-index: 1000;
+        width: 400px;
+        height: auto;
+    }
+
+    .closeiconpharmahomepage {
+        position: absolute;
+        top: 3px;
+        right: 4px;
+        cursor: pointer;
+    }
+
+    .iconforpopuphomepagepharma {
+        font-size: 20px;
+    }
+
+    .popupimagemodalhomepagepharma {
+        max-width: 100%;
+        height: auto;
+    }
+
+    @@media(max-width: 767px) {
+        .popupmodalpharmahomepage {
+            width: 300px;
+        }
+    }
+</style>
+
+@if (Model != null && !string.IsNullOrEmpty(Model.ImageURL))
+{
+
+    <div id="popupOverlay" class="popupoverlaypharmahomepage"></div>
+
+
+    <div id="popupModal" class="popupmodalpharmahomepage">
+
+        <span onclick="closePopup()" class="close-icon closeiconpharmahomepage">
+            <i class="fas fa-times" id="iconforpopuphomepagepharma"></i>
+        </span>
+
+        <img src="@Model.ImageURL" alt="Popup Image" class="popupimagemodalhomepagepharma" />
+    </div>
+
+    <script>
+        window.onload = function () {
+            document.getElementById("popupModal").style.display = "block";
+            document.getElementById("popupOverlay").style.display = "block";
+            document.body.classList.add("blurred");
+        };
+
+        function closePopup() {
+            document.getElementById("popupModal").style.display = "none";
+            document.getElementById("popupOverlay").style.display = "none";
+            document.body.classList.remove("blurred");
+        }
+    </script>
+
+    <style>
+        body.blurred > *:not(#popupModal):not(#popupOverlay) {
+            filter: blur(4px);
+            pointer-events: none;
+            user-select: none;
+        }
+    </style>
+}

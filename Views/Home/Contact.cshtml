@@ -1,0 +1,169 @@
+﻿@model Demo.Models.Contact
+@{
+    ViewBag.Title = "Contact";
+}
+<style>
+    .contact-map {
+        width: 100% !important;
+        height: 309px;
+    }
+</style>
+<!--breadcrumb-->
+<div class="page-banner-area bg-2">
+    <div class="container">
+        <div class="page-banner-content">
+            <h1>Contact Us</h1>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li>Contact Us</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--end-->
+<div class="contact-us-area pt-100 pb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="contacts-form">
+                    <h3>Leave a message</h3>
+                    @* Message Display *@
+                    @if (TempData["ErrorMessage"] != null)
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            @TempData["ErrorMessage"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+
+                    @if (ViewBag.SuccessMessage != null)
+                    {
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            @ViewBag.SuccessMessage
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }  @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { id = "contact-form", @class = "contact-form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group">
+                                    @Html.TextBoxFor(m => m.name, new { @class = "form-control", placeholder = "Name", id = "ContactFormName" })
+                                    @Html.ValidationMessageFor(m => m.name, "", new { @class = "text-danger error_msg", id = "name_error" })
+                                    @*<label>Your name</label>
+                                        <input type="text" name="name" id="name" class="form-control" required="" data-error="Please enter your name">
+                                        <div class="help-block with-errors"></div>*@
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group">
+                                    @Html.TextBoxFor(m => m.email, new { @class = "form-control", placeholder = "Email", type = "email", id = "ContactFormEmail" })
+                                    @Html.ValidationMessageFor(m => m.email, "", new { @class = "text-danger error_msg", id = "email_error" })
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group">
+                                    @Html.TextBoxFor(m => m.mobile, new { @class = "form-control", placeholder = "Phone Number", pattern = "[0-9\\-]*", type = "tel", id = "ContactFormPhone" })
+                                    @Html.ValidationMessageFor(m => m.mobile, "", new { @class = "text-danger error_msg", id = "phone_error" })
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group">
+                                    @Html.TextBoxFor(m => m.whatsapp, new { @class = "form-control", placeholder = "Whatsapp Number", pattern = "[0-9\\-]*", type = "tel", id = "ContactFormwhatapp" })
+                                    @Html.ValidationMessageFor(m => m.whatsapp, "", new { @class = "text-danger error_msg", id = "whatsapp_error" })
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group">
+                                    @Html.TextAreaFor(m => m.message, 6, 0, new { @class = "form-control", placeholder = "Message", id = "ContactFormMessage" })
+                                    @Html.ValidationMessageFor(m => m.message, "", new { @class = "text-danger error_msg", id = "message_error" })
+                                </div>
+                            </div>
+                            <!-- Turnstile CAPTCHA -->
+                            <div class="form-row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                                    <div id="cf-turnstile"></div>
+                                    @Html.HiddenFor(m => m.CaptchaResponse, new { id = "CaptchaResponse" })
+                                    @Html.ValidationMessageFor(m => m.CaptchaResponse, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="form-group mailsendbtn mb-0 w-100">
+                                        <input class="default-btn" type="submit" value="Send Message" />
+                                        <div class="loading" style="display:none;">
+                                            <img class="img-fluid" src="assets/images/icons/ajax-loader.gif" alt="loading" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="response-msg"></div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="contact-and-address">
+                    <h2>Let's Contact Us</h2>
+                    <div class="contact-and-address-content">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="contact-card">
+                                    <div class="icon">
+                                        <i class="ri-phone-line"></i>
+                                    </div>
+                                    <h4>Contact</h4>
+                                    <p>Mobile: <a href="tel:089868 69416">89868 69416 </a></p>
+                                    <p>Mobile: <a href="tel:9955994716">9955994716 </a></p>
+                                    <p>Mail: <a href="mailto:vidyabakshi0921@gmail.com ">vidyabakshi0921@gmail.com </a></p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="contact-card">
+                                    <div class="icon">
+                                        <i class="ri-map-pin-line"></i>
+                                    </div>
+                                    <h4>Address</h4>
+                                    <p>
+                                        Near Dr Anwar ekram nursing home ,Rajendra path,Lohsingna road ,Hazaribagh.
+                                        Pin 825301
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-media">
+                        <h3>Map</h3>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d116634.93672662092!2d85.26554632677318!3d24.001363881853496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x39f49ea267600133%3A0xc4f1214a050b7876!2s282X%2BH54%2C%20Lohsingna%2C%20Hazaribagh%2C%20Jharkhand%20825301!3m2!1d24.001404899999997!2d85.34795679999999!5e0!3m2!1sen!2sin!4v1742813997276!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Cloudflare Turnstile Script -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" async defer></script>
+
+<script>
+window.onloadTurnstileCallback = function () {
+    turnstile.render("#cf-turnstile", {
+        sitekey: "0x4AAAAAABfBNlG08FWG_OcN",
+        callback: function (token) {
+            $("#CaptchaResponse").val(token);
+            console.log("Captcha token:", token);
+        },
+        errorCallback: function () {
+            alert("CAPTCHA verification failed. Please try again.");
+        }
+    });
+};
+</script>
+
+<!-- End Contact Form - Details -->

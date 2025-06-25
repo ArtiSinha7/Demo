@@ -1,0 +1,426 @@
+﻿@model Demo.Models.IndexView
+@{
+    ViewBag.Title = "Home Page";
+}
+<style>
+    .carousel-item img {
+        height: 650px !important;
+    }
+
+    .Css-heading-notice-birthday {
+        /* width: 379px;*/
+        background: var(--primary-color);
+        color: white;
+    }
+
+    .Css-notice-font {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .wrapper header {
+        display: flex;
+        align-items: center;
+        padding: 16px 30px 0px;
+        justify-content: space-between;
+    }
+
+    header .current-date {
+        font-size: 1.45rem;
+        font-weight: 500;
+    }
+
+    header .icons span {
+        height: 38px;
+        width: 38px;
+        margin: 0 1px;
+        cursor: pointer;
+        color: #878787;
+        text-align: center;
+        line-height: 38px;
+        font-size: 1.9rem;
+        user-select: none;
+        border-radius: 50%;
+    }
+
+    ul li {
+        list-style: none;
+    }
+
+    .days li.active {
+        color: #fff;
+    }
+
+        .days li.active::before {
+            background: var(--secondary-color);
+        }
+
+
+    .css-border-desk {
+        border-style: dashed none;
+        border-bottom: none;
+        padding-top: 5px;
+    }
+
+    .demof {
+        min-height: 373px;
+        background-size: cover;
+    }
+
+
+        .demof li::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+
+    .demo5 ul li p {
+        margin-bottom: 0px;
+    }
+
+    .demo5 ul {
+        padding: 0;
+        list-style: none;
+        margin: 0px;
+        width: 100%;
+        overflow: hidden auto;
+        padding: 3px;
+        position: absolute;
+        top: 0px;
+    }
+
+    .demof {
+        min-height: 373px;
+        background-size: cover;
+        position: relative;
+        height: 348px;
+        overflow: hidden;
+    }
+
+    .demo5 ul li {
+        padding: 5px 10px 5px 10px;
+        /* border-bottom: 1px dashed #847d7d; */
+        border-radius: 0px;
+        /* box-shadow: rgba(11, 18, 25, 0.42) 0px 6px 12px 0px; */
+        margin: 10px 10px;
+        /*background: rgba(253, 214, 233, 0.56);*/
+        display: list-item;
+    }
+
+    .Css-notice-li {
+        /* border-bottom: 1px solid orange !important; */
+        /* background-color: white !important;*/
+        padding: 8px 0px 0px 0px !important;
+    }
+
+    .event-date-wrapper {
+        width: 20%;
+        margin-left: 11px;
+        padding-left: 3px;
+        padding-right: 1px;
+        /* border: 1px solid #f9eaea; */
+    }
+
+    .event-date {
+        background: var(--secondary-color);
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        line-height: 36px;
+        font-size: 22px;
+        font-weight: 700;
+        color: white;
+        /* border-right: 1px solid #FFB013; */
+    }
+
+    .event-month {
+        background: white;
+        display: flex;
+        justify-content: center;
+        line-height: 36px;
+        font-size: 11px;
+        color: black;
+        border: 1px solid var(--secondary-color);
+    }
+
+    .Css-notice-p {
+        width: 76%;
+        overflow-wrap: break-word;
+    }
+
+    .demo5 ul li img {
+        height: 58px;
+        width: 58px;
+        border-radius: 50%;
+        margin-right: 10px;
+        background: #fff;
+        padding: 3px;
+    }
+
+    .demo5 ul li p {
+        margin-bottom: 0px;
+    }
+
+    .demo5 ul li p {
+        margin-bottom: 0px;
+    }
+
+    .text-decoration-none {
+        text-decoration: none !important;
+        color: var(--primary-color);
+    }
+
+    .demof {
+        min-height: 399px;
+        background-size: cover;
+        position: relative;
+        height: 348px;
+        overflow: hidden;
+    }
+
+    .Css-box-shadow-height {
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        height: 70px;
+    }
+
+    .Css-box-shadow-height2 {
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        width: 100%;
+        height: 70px;
+        padding: 7px;
+        background: white;
+    }
+
+    .Css-notice-ul li {
+        margin: 0px 10px !important;
+    }
+
+    .Css-notice-text {
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .Css-notice-bg {
+        /* background-image: url('../../content/assets/img/team/team_bg_1.png');*/
+        background-image: url('../../content/assets/img/jyoti_high_school/notice-bg-img.png');
+    }
+</style>
+@*popupBanner partial view call*@
+
+@*@Html.Partial("_Popup", Model.PopupBanner)*@
+
+@*popupBanner partial view call*@
+<!-- Carousel -->
+<div id="demo" class="carousel slide banner-area" data-bs-ride="carousel">
+
+    <!-- Indicators/dots -->
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+    </div>
+
+    <!-- The slideshow/carousel -->
+    @if (Model.Banners != null && Model.Banners.Any())
+    {
+        foreach (var banner in Model.Banners)
+        {
+            <div class="carousel-inner">
+                <div class="carousel-item">
+                    <img src="@banner.ImagePath" alt="platschool" title="playschool" class="d-block w-100">
+                </div>
+            </div>
+        }
+    }
+    else
+    { <div class="carousel-inner">
+            <div class="carousel-item">
+                <img src="~/assets/demo-img/banner-play.jpg" alt="platschool" title="playschool" class="d-block w-100">
+            </div>
+
+            <div class="carousel-item">
+                <img src="~/assets/demo-img/bannerplay2.jpg" alt="platschool" title="playschool" class="d-block w-100">
+            </div>
+    </div>
+            }
+        </div>
+
+        <!-- Left and right controls/icons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+<!--about us-->
+<div class="campus-information-area pt-100 pb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="campus-content">
+                    <div class="campus-title">
+                        <h2>📍 Welcome to Jiny and Jony Play School – Where Learning Meets Fun & Growth! 🎈🎓✨</h2>
+                        <p class="text-justify">As we embark on a new academic session, I extend a warm and heartfelt welcome* to all our students, teachers, staff, and parents. Each year marks a new milestone, a new dream fulfilled, and fresh goals set* for the future. At Jiny and Jony Play School, we are dedicated to turning aspirations into reality through sincerity, perseverance, and a commitment to excellence.  </p>
+                        <p class="text-justify">
+                            Our institution is built on the pillars of *academic excellence, character development, and holistic growth. We strive to provide a **nurturing and stimulating environment* where young minds can *explore, learn, and thrive. Beyond academics, we instill in our students the **core values of Respect, Integrity, Compassion, and Excellence*, equipping them to navigate an ever-evolving world with confidence.
+                        </p>
+                    </div>
+                    <a href="/about" class="default-btn btn">Read More<i class="flaticon-next"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="campus-content">
+                    <div class="about-img">
+                        <img src="~/assets/demo-img/abcd.png" class="img-fluid" alt="about image" title="about image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--about us end-->
+<!--services-->
+<div class="campus-life-area bg-f4f6f9 ptb-100">
+    <div class="container">
+        <div class="section-title">
+            <h2>Facility</h2>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200" data-aos-once="true">
+                <div class="single-campus-card">
+                    <div class="img">
+                        <a href="#"><img src="~/assets/demo-img/nursery.jpg" alt="Image"></a>
+                    </div>
+                    <div class="campus-content">
+                        <a href="/facility"><h3>Safe & Spacious Play Area</h3></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="400" data-aos-once="true">
+                <div class="single-campus-card">
+                    <div class="img">
+                        <a href="#"><img src="~/assets/demo-img/earlyeducation.jpg" alt="Image"></a>
+                    </div>
+                    <div class="campus-content">
+                        <a href="/facility"><h3>Smart & Interactive Classrooms </h3></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="400" data-aos-once="true">
+                <div class="single-campus-card">
+                    <div class="img">
+                        <a href="#"><img src="~/assets/demo-img/daycare.jpg" alt="Image"></a>
+                    </div>
+                    <div class="campus-content">
+                        <a href="/facility"><h3>Trained & Caring Staff </h3></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="more-campus text-center">
+            <a href="/Facility" class="default-btn btn">Read More<i class="flaticon-next"></i></a>
+        </div>
+    </div>
+</div>
+<!--services section end-->
+<!--gallery section-->
+<div class="student-life-area pt-100 pb-70">
+    <div class="container">
+        <div class="section-title">
+            <h2>Gallery</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="student-life-card">
+                    <img src="~/assets/demo-img/b-play.jpeg" class="img-fluid playschool-img" alt="Image">
+
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="student-life-card">
+                    <img src="~/assets/demo-img/trip1.jpeg" class="img-fluid playschool-img" alt="Image">
+
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="student-life-card">
+                    <img src="~/assets/demo-img/trip3.jpeg" class="img-fluid playschool-img" alt="Image">
+
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="student-life-card">
+                    <img src="~/assets/demo-img/cong.jpeg" class="img-fluid playschool-img" alt="Image">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="student-life-card">
+                    <img src="~/assets/demo-img/trip2.jpeg" class="img-fluid playschool-img" alt="Image">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="student-life-card">
+                    <img src="~/assets/demo-img/cong2.jpeg" class="img-fluid playschool-img" alt="Image">
+                </div>
+            </div>
+            <div class="more-campus text-center">
+                <a href="/gallery" class="default-btn btn">View More<i class="flaticon-next"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--notice -->
+<div class="campus-information-area pt-100 pb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="dumy-about-img">
+                    <img src="~/assets/demo-img/illustrator-removebg-preview.png" class="img-fluid" alt="about image" title="about image">
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-12 col-12 pb-3 pb-lg-5  pe-lg-3 overflow-hidden wow animate__animated animate__fadeInLeft">
+
+                <div style="box-shadow: 0 6px 12px -4px rgb(11 18 25 / 42%);">
+                    <div class="Css-notice-head overflow-hidden">
+                        <div class="Css-heading-notice-birthday">
+                            <p class="text-white text-center p-3 Css-notice-font mb-0"><i class="fa fa-link"></i>&nbsp; NOTICE BOARD</p>
+                        </div>
+
+                    </div>
+                    <div class="Css-notice-body w-100">
+                        <div class="demo5 demof">
+                            <ul class="Css-notice-ul">
+                                <li class="Css-notice-li">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-2 event-date-wrapper">
+                                            <div class="Css-box-shadow-height">
+                                                <span class="event-date h-50 Css-lineheight">25</span>
+                                                <span class="event-month">March-2025</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-10 css-news-desk Css-notice-p">
+                                            <div class="Css-box-shadow-height2">
+                                                <a href="/" target="_blank" class="Css-notice-text Css_notice-desk Css_studentName_notice text-decoration-none">📢 NOTICE: Admissions Open for Session 2025 🎉</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end-->

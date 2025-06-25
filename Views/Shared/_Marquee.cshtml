@@ -1,0 +1,142 @@
+﻿<style>
+    /*MARQUEE*/
+    /* Sticky Latest‑News Bar */
+    .latest-news {
+        position: sticky;
+        bottom: 0;
+        z-index: 1030;
+    }
+
+    /* Optional: full‑width look on small screens */
+    @@media (max-width: 767.98px) {
+        #marque-section .row {
+            margin: 0;
+        }
+
+        #marque-section .col-2,
+        #marque-section .col-10 {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    .Css-border {
+        border-left: 12px solid var(--secondary-color);
+        border-top: 12px solid var(--secondary-color);
+    }
+
+    #marque-section {
+        /* height: 36px;*/
+        overflow: hidden;
+    }
+
+    .btn-11 {
+        border: none;
+        color: #fff;
+        overflow: hidden;
+    }
+
+    .custom-btn {
+        background: var(--secondary-color);
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        outline: none;
+    }
+
+    .Css_Latest_News {
+        background-color: var(--secondary-color);
+        padding: 7px 0px 4px 0px;
+        text-align: center;
+        /* height: 37px;*/
+    }
+
+    .btn-11:before {
+        position: absolute;
+        content: '';
+        display: inline-block;
+        top: -180px;
+        left: 0;
+        width: 30px;
+        height: 100%;
+        background-color: #fff;
+        animation: shiny-btn1 3s ease-in-out infinite;
+    }
+
+    #marque-section span {
+        color: #fff !important;
+        margin-bottom: 0px;
+        font-size: 14px;
+    }
+
+    #marque-section.sticky-bottom {
+        position: sticky;
+        z-index: 30;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .Css-margin-top {
+        margin-top: 0px !important;
+    }
+
+    #marque-section span a {
+        color: var(--secondary-color);
+    }
+
+    @@media (max-width: 768px) {
+        .Css_LN_MV {
+            display: none;
+        }
+    }
+
+    .Css-col-10-latestnews {
+        background-color: #fff;
+        padding: 5px 31px 0px 15px;
+        border: 1px solid var(--secondary-color);
+    }
+
+    .Css-h6-ma {
+        margin-bottom: 0px;
+        color: #fff !important;
+        font-size: 14px
+    }
+
+    .Css-box-usefullinks {
+        background: var(--secondary-color);
+        color: black;
+        padding: 10px 12px;
+        align-items: center;
+    }
+
+    @@media (max-width: 990px) {
+        .Css-important-link a {
+            margin-bottom: 10px;
+        }
+    }
+    /**/
+</style>
+<!--latest news-->
+<div id="marque-section" class="sticky-bottom">
+    <div class="Css-margin-top">
+        <div class="row">
+            <div class="col-2 Css_Latest_News  col-md-2 custom-btn btn-11">
+                <p class="Css-h6-ma">
+                    <span class="text-uppercase Css_LN_MV">Latest News &nbsp; </span>
+                    <i class="fa fa-bell"></i>
+                </p>
+            </div>
+            <div class="col-10  col-md-10 Css-col-10-latestnews" style="border: 1px solid #e99b7d">
+                <marquee direction="left"
+                         [scrollAmount]="18"
+                         onmouseout="this.start()"
+                         onmouseover="this.stop()">
+                    <span class="Css_SN_a d-inline">
+                        <a class=" d-inline me-2" href="#"> @Html.Raw(ViewBag.MarqueeContent)</a>
+                    </span>
+                </marquee>
+            </div>
+        </div>
+    </div>
+</div>
+<!--latest news end-->

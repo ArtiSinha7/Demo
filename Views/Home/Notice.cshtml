@@ -1,0 +1,230 @@
+﻿
+@{
+    ViewBag.Title = "Notice";
+}
+<style>
+    .Css-heading-notice-birthday {
+        /* width: 379px;*/
+        background: var(--primary-color);
+        color: white;
+    }
+
+    .Css-notice-font {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .wrapper header {
+        display: flex;
+        align-items: center;
+        padding: 16px 30px 0px;
+        justify-content: space-between;
+    }
+
+    header .current-date {
+        font-size: 1.45rem;
+        font-weight: 500;
+    }
+
+    header .icons span {
+        height: 38px;
+        width: 38px;
+        margin: 0 1px;
+        cursor: pointer;
+        color: #878787;
+        text-align: center;
+        line-height: 38px;
+        font-size: 1.9rem;
+        user-select: none;
+        border-radius: 50%;
+    }
+
+    ul li {
+        list-style: none;
+    }
+
+    .css-border-desk {
+        border-style: dashed none;
+        border-bottom: none;
+        padding-top: 5px;
+    }
+
+
+
+        .demof li::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+
+    .demo5 ul li p {
+        margin-bottom: 0px;
+    }
+
+    .demo5 ul {
+        padding: 0;
+        list-style: none;
+        margin: 0px;
+        width: 100%;
+        overflow: hidden auto;
+        padding: 3px;
+      /*  position: absolute;*/
+       /* top: 0px;*/
+    }
+
+    .demo5 ul li {
+        padding: 5px 10px 5px 10px;
+        /* border-bottom: 1px dashed #847d7d; */
+        border-radius: 0px;
+        /* box-shadow: rgba(11, 18, 25, 0.42) 0px 6px 12px 0px; */
+        margin: 10px 10px;
+        /*background: rgba(253, 214, 233, 0.56);*/
+        display: list-item;
+    }
+
+    .Css-notice-li {
+        /* border-bottom: 1px solid orange !important; */
+        /* background-color: white !important;*/
+        padding: 8px 0px 0px 0px !important;
+    }
+
+    .event-date-wrapper {
+        width: 20%;
+        margin-left: 11px;
+        padding-left: 3px;
+        padding-right: 1px;
+        /* border: 1px solid #f9eaea; */
+    }
+
+    .event-date {
+        background: var(--secondary-color);
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        line-height: 36px;
+        font-size: 22px;
+        font-weight: 700;
+        color: white;
+        /* border-right: 1px solid #FFB013; */
+    }
+
+    .event-month {
+        background: white;
+        display: flex;
+        justify-content: center;
+        line-height: 36px;
+        font-size: 11px;
+        color: black;
+        border: 1px solid var(--secondary-color);
+    }
+
+    .Css-notice-p {
+        width: 76%;
+        overflow-wrap: break-word;
+    }
+
+    .demo5 ul li p {
+        margin-bottom: 0px;
+    }
+
+    .demo5 ul li p {
+        margin-bottom: 0px;
+    }
+
+    .text-decoration-none {
+        text-decoration: none !important;
+        color: var(--primary-color);
+    }
+
+    .demof {
+        min-height: 399px;
+        background-size: cover;
+        position: relative;
+        height: 348px;
+        overflow: hidden;
+    }
+    .Css-box-shadow-height {
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+       
+    }
+
+    .Css-box-shadow-height2 {
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        width: 100%;
+       
+        padding: 26px;
+        background: white;
+    }
+
+    .Css-notice-ul li {
+        margin: 0px 10px !important;
+    }
+
+    .Css-notice-text {
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .Css-notice-bg {
+        /* background-image: url('../../content/assets/img/team/team_bg_1.png');*/
+        background-image: url('../../content/assets/img/jyoti_high_school/notice-bg-img.png');
+    }
+</style>
+<!--breadcrumb-->
+<div class="page-banner-area bg-2">
+    <div class="container">
+        <div class="page-banner-content">
+            <h1>Notice</h1>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li>Notice</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--end-->
+<div class="campus-information-area pt-100 pb-70">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-lg-12 col-md-12 col-12 pb-3 pb-lg-5  pe-lg-3 overflow-hidden wow animate__animated animate__fadeInLeft">
+
+                <div style="box-shadow: 0 6px 12px -4px rgb(11 18 25 / 42%);">
+                    <div class="Css-notice-head overflow-hidden">
+                        <div class="Css-heading-notice-birthday">
+                            <p class="text-white text-center p-3 Css-notice-font mb-0"><i class="fa fa-link"></i>&nbsp; NOTICE BOARD</p>
+                        </div>
+
+                    </div>
+                    <div class="Css-notice-body w-100">
+                        <div class="demo5 demof">
+                            <ul class="Css-notice-ul">
+                                <li class="Css-notice-li">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-2 event-date-wrapper">
+                                            <div class="Css-box-shadow-height">
+                                                <span class="event-date h-50 Css-lineheight">25</span>
+                                                <span class="event-month">March-2025</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-10 css-news-desk Css-notice-p">
+                                            <div class="Css-box-shadow-height2">
+                                                <a href="/" target="_blank" class="Css-notice-text Css_notice-desk Css_studentName_notice text-decoration-none">📢 NOTICE: Admissions Open for Session 2025 🎉</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
